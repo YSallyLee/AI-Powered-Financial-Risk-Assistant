@@ -1,13 +1,14 @@
-
-
 import streamlit as st
-import pandas as pd
 import google.generativeai as genai
-from datetime import datetime
-
+import pandas as pd
+import os
 # ---------- Configure Gemini ----------
-genai.configure(api_key="Your API")
-model = genai.GenerativeModel('gemini-1.5-pro')
+
+google_api_key = st.secrets["api_keys"]["google"]
+
+genai.configure(api_key=google_api_key)
+model = genai.GenerativeModel("gemini-2.5-flash")
+
 
 # ---------- Sample User & Transaction Data ----------
 users_df = pd.DataFrame({
